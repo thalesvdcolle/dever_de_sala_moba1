@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RepositoriesViewModel @Inject constructor(private val repositoriesService: RepositoriesService) : ViewModel(){
+class RepositoriesViewModel @Inject constructor(private val repositoriesService: RepositoriesService) : ViewModel() {
     private val _repositoriesState = MutableStateFlow(RepositoriesUiState())
     val repositoriesUiState: StateFlow<RepositoriesUiState>
         get() = _repositoriesState
@@ -21,7 +21,7 @@ class RepositoriesViewModel @Inject constructor(private val repositoriesService:
     }
     fun searchRepositories() {
         viewModelScope.launch {
-            val response = repositoriesService.searchRepositories("User")
+            val response = repositoriesService.searchRepositories("DanOninho16")
             if (response.isSuccessful) {
                 _repositoriesState.update { currentState ->
                     currentState.copy(

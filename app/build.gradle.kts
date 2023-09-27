@@ -63,6 +63,7 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation ("com.squareup.retrofit2:retrofit:2.7.1")
     implementation ("com.google.code.gson:gson:2.10.1")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
     implementation ("com.squareup.retrofit2:converter-gson:2.7.1")
     implementation ("com.google.dagger:hilt-android:2.44")
     implementation ("com.squareup.okhttp3:okhttp:4.9.2")

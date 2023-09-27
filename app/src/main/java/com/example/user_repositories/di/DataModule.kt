@@ -15,20 +15,19 @@ import retrofit2.converter.gson.GsonConverterFactory
 @InstallIn(SingletonComponent::class)
 object DataModule {
     @Provides
-    fun providesClient(client: OkHttpClient): OkHttpClient {
-            val client = OkHttpClient.Builder()
-            .addInterceptor { chain ->
-                val newRequest = chain.request().newBuilder().addHeader(
-                    "Autorization: Bearer ", "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"
-                ).build()
-                chain.proceed(newRequest)
-            }
-            .build()
-        return OkHttpClient()
-    }
+    fun providesHttpClient(): OkHttpClient{
+    return OkHttpClient.Builder()
+        .addInterceptor { chain ->
+            val newRequest = chain.request().newBuilder().addHeader(
+                "Autorization: Bearer ", "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"
+            ).build()
+            chain.proceed(newRequest)
+        }
+        .build()}
     @Provides
-    fun providesRetrofit(): Retrofit {
+    fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
+            .client(okHttpClient)
             .baseUrl("https://api.github.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()

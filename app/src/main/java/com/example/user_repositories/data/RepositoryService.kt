@@ -9,11 +9,11 @@ interface RepositoriesService {
     fun searchRepositories(@Query("{user}")searchQuery: String): Response<SearchResponse>
 }
 
-val repositoriesService = retrofit.create(RepositoriesService::class.java)
+val repositoriesService = retrofit.create(RepositoriesService::class.java)!!
 
 val repositories = listOf(
-    "Transformers 1",
-    "Transformers 2",
-    "Titanic",
-    "Transformers 3",
+    "DanOninho16",
+    "Pedro",
+    "GrandeOnde",
+    "CorreaHugo",
 )

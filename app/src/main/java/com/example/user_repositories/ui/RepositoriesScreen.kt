@@ -13,22 +13,16 @@ import com.example.user_repositories.data.Repository
 
 @Composable
 fun Repository(repository: Repository, modifier: Modifier = Modifier) {
-    Column {
-        Row {
-            AsyncImage(model = repository.name, contentDescription = null)
-            Text(
-                text = repository.name,
-                modifier = modifier
-            )
-            Text(
-                text = repository.name,
-                modifier = modifier
-            )
-            Text(
-                text = repository.name,
-                modifier = modifier
-            )
-        }
+    Row {
+        AsyncImage(model = repository.name, contentDescription = null)
+        Text(
+            text = repository.name,
+            modifier = modifier
+        )
+        Text(
+            text = repository.description,
+            modifier = modifier
+        )
     }
 }
 

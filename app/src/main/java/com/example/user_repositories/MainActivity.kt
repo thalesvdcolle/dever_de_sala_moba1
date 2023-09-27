@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    RepositoriesList(repositoriesViewModel = RepositoriesViewModel)
+                    RepositoriesList(repositoriesViewModel = repositoriesViewModel)
                 }
             }
         }
@@ -45,6 +45,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     UserRepositoriesTheme {
-        Greeting("Android")
+        RepositoriesList()
     }
 }
