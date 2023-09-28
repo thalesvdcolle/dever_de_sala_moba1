@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface RepositoriesService {
     @GET("/users/{user}/repos;")
-    fun searchRepositories(@Query("s")searchQuery: String): Response<SearchResponse>
+    fun searchRepositories(@Query("{user}")searchQuery: String): Response<SearchResponse>
 }
 
 val repositoriesService = retrofit.create(RepositoriesService::class.java)

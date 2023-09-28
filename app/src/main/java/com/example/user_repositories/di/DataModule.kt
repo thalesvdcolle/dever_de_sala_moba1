@@ -6,12 +6,26 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
-@InstallIn(ViewModelComponent::class)
+@InstallIn(SingletonComponent::class)
 object DataModule {
+    @Provides
+    fun providesClient(client: OkHttpClient): OkHttpClient {
+            val client = OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                val newRequest = chain.request().newBuilder().addHeader(
+                    "Autorization: Bearer ", "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"
+                ).build()
+                chain.proceed(newRequest)
+            }
+            .build()
+        return OkHttpClient()
+    }
     @Provides
     fun providesRetrofit(): Retrofit {
         return Retrofit.Builder()
