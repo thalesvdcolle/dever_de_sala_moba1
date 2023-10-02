@@ -1,4 +1,4 @@
-package com.example.user_repositories
+package com.example.User
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,22 +11,25 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.user_repositories.ui.RepositoriesList
-import com.example.user_repositories.ui.RepositoriesViewModel
-import com.example.user_repositories.ui.theme.UserRepositoriesTheme
-
+import com.example.User.ui.SearchBar
+import com.example.User.ui.UsersList
+import com.example.User.ui.UsersViewModel
+import com.example.User.ui.theme.UsersTheme
+import dagger.hilt.android.AndroidEntryPoint
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private val repositoriesViewModel: RepositoriesViewModel by viewModels()
+    private val usersViewModel: UsersViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            UserRepositoriesTheme {
+            UsersTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    RepositoriesList(repositoriesViewModel = repositoriesViewModel)
+                    SearchBar()
+                    UsersList(usersViewModel = usersViewModel)
                 }
             }
         }
@@ -44,7 +47,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    UserRepositoriesTheme {
-        RepositoriesList()
+    UsersTheme {
+        UsersList()
     }
 }

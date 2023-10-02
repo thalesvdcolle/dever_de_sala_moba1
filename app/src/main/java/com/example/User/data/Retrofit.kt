@@ -1,4 +1,4 @@
-package com.example.user_repositories.data
+package com.example.User.data
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -7,13 +7,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 val client = OkHttpClient.Builder()
     .addInterceptor { chain ->
         val newRequest = chain.request().newBuilder().addHeader(
-            "Autorization: Bearer ", "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"
+            "Authorization", "Bearer {TOKEN}"
         ).build()
         chain.proceed(newRequest)
     }
     .build()
 
-val retrofit = Retrofit.Builder()
-    .baseUrl("https://https://api.github.com/")
+val retrofit: Retrofit = Retrofit.Builder()
+    .baseUrl("https://api.github.com")
     .addConverterFactory(GsonConverterFactory.create())
     .build()

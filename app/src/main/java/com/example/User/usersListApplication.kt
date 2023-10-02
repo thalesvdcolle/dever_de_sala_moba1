@@ -1,9 +1,8 @@
-package com.example.user_repositories
+package com.example.User
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class RepositoriesListApplication : Application(){
-
+class UsersListApplication : Application(){
 }

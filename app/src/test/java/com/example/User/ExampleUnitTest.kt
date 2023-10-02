@@ -1,4 +1,4 @@
-package com.example.user_repositories
+package com.example.User
 
 import org.junit.Test
 

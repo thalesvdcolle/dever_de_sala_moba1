@@ -1,11 +1,9 @@
-package com.example.user_repositories.di
+package com.example.User.di
 
-import com.example.user_repositories.data.RepositoriesService
-import com.example.user_repositories.data.repositoriesService
+import com.example.User.data.UsersService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -19,7 +17,7 @@ object DataModule {
     return OkHttpClient.Builder()
         .addInterceptor { chain ->
             val newRequest = chain.request().newBuilder().addHeader(
-                "Autorization: Bearer ", "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"
+                "Authorization", "Bearer {TOKEN}"
             ).build()
             chain.proceed(newRequest)
         }
@@ -28,12 +26,12 @@ object DataModule {
     fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("https://api.github.com/")
+            .baseUrl("https://api.github.com")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
     @Provides
-    fun providesRepositoriesService(retrofit: Retrofit): RepositoriesService {
-        return retrofit.create(repositoriesService::class.java)
+    fun providesUsersService(retrofit: Retrofit): UsersService {
+        return retrofit.create(UsersService::class.java)
     }
 }
