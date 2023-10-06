@@ -35,9 +35,6 @@ import com.example.User.data.User
 @Composable
 fun User(user: User, modifier: Modifier = Modifier) {
     val context = LocalContext.current
-    val intent = remember {
-        Intent(Intent.ACTION_VIEW, Uri.parse(user.url))
-    }
     Card(modifier = Modifier
         .fillMaxWidth()
         .height(125.dp)
@@ -58,7 +55,10 @@ fun User(user: User, modifier: Modifier = Modifier) {
                     text = "Url:${user.url}",
                     modifier = Modifier.padding(3.dp),
                 )
-                Button(onClick = { context.startActivity(intent) }) {
+                Button(onClick = {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(user.url))
+                    context.startActivity(intent)
+                }) {
                     Text(text = "URL page")
                 }
             }
