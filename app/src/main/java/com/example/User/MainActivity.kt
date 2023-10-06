@@ -11,8 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.User.ui.SearchBar
 import com.example.User.ui.UsersList
+import com.example.User.ui.UsersScreen
 import com.example.User.ui.UsersViewModel
 import com.example.User.ui.theme.UsersTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,8 +28,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    SearchBar()
-                    UsersList(usersViewModel = usersViewModel)
+                    UsersScreen(usersViewModel = usersViewModel)
                 }
             }
         }

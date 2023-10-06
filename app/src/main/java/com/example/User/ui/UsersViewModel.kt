@@ -17,12 +17,12 @@ class UsersViewModel @Inject constructor(private val usersService: UsersService)
         get() = _usersState
 
     init{
-        searchUsers()
+        searchUsers("DanOninho")
     }
-    fun searchUsers() {
+    fun searchUsers(query: String) {
         viewModelScope.launch {
             try {
-                val response = usersService.searchUsers("DanOninho")
+                val response = usersService.searchUsers(query)
                 if (response.isSuccessful) {
                     Log.d("Usuários", "Busca bem-sucedida")
                     Log.d("Usuários", response.body().toString())
@@ -49,4 +49,5 @@ class UsersViewModel @Inject constructor(private val usersService: UsersService)
             }
         }
     }
+
 }
