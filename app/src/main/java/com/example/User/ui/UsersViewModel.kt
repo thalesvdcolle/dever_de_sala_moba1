@@ -17,7 +17,7 @@ class UsersViewModel @Inject constructor(private val usersService: UsersService)
         get() = _usersState
 
     init{
-        searchUsers("DanOninho")
+        searchUsers("thalesvdcolle")
     }
     fun searchUsers(query: String) {
         viewModelScope.launch {

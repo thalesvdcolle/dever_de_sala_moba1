@@ -18,7 +18,7 @@ object DataModule {
     return OkHttpClient.Builder()
         .addInterceptor { chain ->
             val newRequest = chain.request().newBuilder().addHeader(
-                "Authorization", "Bearer $KEY"
+                "Authorization", "Bearer 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"
             ).build()
             chain.proceed(newRequest)
         }

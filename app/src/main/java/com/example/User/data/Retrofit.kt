@@ -4,12 +4,11 @@ import com.example.user_repositories.BuildConfig
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-val KEY = BuildConfig.API_KEY
 
 val client = OkHttpClient.Builder()
     .addInterceptor { chain ->
         val newRequest = chain.request().newBuilder().addHeader(
-            "Authorization", "Bearer $KEY"
+            "Authorization", "Bearer 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"
         ).build()
         chain.proceed(newRequest)
     }
