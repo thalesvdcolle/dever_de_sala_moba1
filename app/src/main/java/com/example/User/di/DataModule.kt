@@ -1,5 +1,6 @@
 package com.example.User.di
 
+import com.example.User.data.KEY
 import com.example.User.data.UsersService
 import dagger.Module
 import dagger.Provides
@@ -17,7 +18,7 @@ object DataModule {
     return OkHttpClient.Builder()
         .addInterceptor { chain ->
             val newRequest = chain.request().newBuilder().addHeader(
-                "Authorization", "Bearer {TOKEN}"
+                "Authorization", "Bearer $KEY"
             ).build()
             chain.proceed(newRequest)
         }
